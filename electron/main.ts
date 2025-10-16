@@ -1,10 +1,10 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
-const path = require('path');
-const fs = require('fs');
+import { app, BrowserWindow, ipcMain, IpcMainInvokeEvent } from 'electron';
+import path from 'path';
+import fs from 'fs';
 
 const isDev = process.env.NODE_ENV === 'development' || !app.isPackaged;
 
-let mainWindow: any = null;
+let mainWindow: BrowserWindow | null = null;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -66,10 +66,23 @@ ipcMain.handle('get-entries', async () => {
   }
 });
 
-ipcMain.handle('save-entry', async (_event: any, entry: any) => {
+interface JournalEntry {
+  id: string;
+  date: string;
+  type: string;
+  content: Record<string, string>;
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface JournalData {
+  entries: JournalEntry[];
+}
+
+ipcMain.handle('save-entry', async (_event: IpcMainInvokeEvent, entry: JournalEntry) => {
   try {
-    const data = JSON.parse(fs.readFileSync(journalDataPath, 'utf-8'));
-    const existingIndex = data.entries.findIndex((e: any) => e.id === entry.id);
+    const data = JSON.parse(fs.readFileSync(journalDataPath, 'utf-8')) as JournalData;
+    const existingIndex = data.entries.findIndex((e) => e.id === entry.id);
 
     if (existingIndex >= 0) {
       data.entries[existingIndex] = entry;
@@ -85,10 +98,10 @@ ipcMain.handle('save-entry', async (_event: any, entry: any) => {
   }
 });
 
-ipcMain.handle('delete-entry', async (_event: any, entryId: string) => {
+ipcMain.handle('delete-entry', async (_event: IpcMainInvokeEvent, entryId: string) => {
   try {
-    const data = JSON.parse(fs.readFileSync(journalDataPath, 'utf-8'));
-    data.entries = data.entries.filter((e: any) => e.id !== entryId);
+    const data = JSON.parse(fs.readFileSync(journalDataPath, 'utf-8')) as JournalData;
+    data.entries = data.entries.filter((e) => e.id !== entryId);
     fs.writeFileSync(journalDataPath, JSON.stringify(data, null, 2));
     return { success: true };
   } catch (error) {
