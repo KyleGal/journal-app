@@ -1,0 +1,175 @@
+# ============================================
+# DEPENDENCIES
+# ============================================
+node_modules/
+
+
+# ============================================
+# BUILD OUTPUTS & ARTIFACTS
+# ============================================
+# Vite build outputs
+dist/
+dist-ssr/
+
+# Electron compiled files
+dist-electron/
+
+# Electron-builder distribution
+release/
+
+# Generic build directories
+out/
+build/
+
+
+# ============================================
+# TYPESCRIPT
+# ============================================
+*.tsbuildinfo
+
+
+# ============================================
+# VITE
+# ============================================
+.vite/
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+
+# ============================================
+# LOGS
+# ============================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+
+# ============================================
+# OS FILES
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+
+# ============================================
+# IDE & EDITOR FILES
+# ============================================
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Visual Studio
+.vs/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.user
+*.userosscache
+*.sln.docstates
+
+
+# ============================================
+# TESTING & COVERAGE
+# ============================================
+coverage/
+*.lcov
+.nyc_output/
+test-results/
+playwright-report/
+playwright/.cache/
+
+
+# ============================================
+# CACHE & TEMPORARY FILES
+# ============================================
+.eslintcache
+.cache/
+.parcel-cache/
+*.tmp
+*.temp
+.tmp/
+.temp/
+.npm
+.node_repl_history
+
+
+# ============================================
+# ELECTRON-SPECIFIC
+# ============================================
+*.asar
+userData/
+user-data/
+app-data/
+
+
+# ============================================
+# PACKAGE MANAGERS
+# ============================================
+# Keep package-lock.json (using npm)
+# Ignore other package manager files
+yarn.lock
+pnpm-lock.yaml
+
+
+# ============================================
+# MISC
+# ============================================
+*.local
